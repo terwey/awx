@@ -106,6 +106,10 @@ secret_key=awxsecret
 # it manages from the docker host, you can set this to turn it into a volume for the container.
 #project_data_dir=/var/lib/awx/projects
 
+# AWX configuration directory. If you need access to where AWX stores it's configuration files
+# this can be set so it'll be available.
+#config_data_dir=/var/lib/awx/etc/tower
+
 # CA Trust directory. If you need to provide custom CA certificates, supplying
 # this variable causes this directory on the host to be bind mounted over
 # /etc/pki/ca-trust in the awx_task and awx_web containers.

@@ -15,11 +15,14 @@ services:
     hostname: awxweb
     user: root
     restart: unless-stopped
-    {% if (project_data_dir is defined) or (ca_trust_dir is defined) %}
+    {% if (project_data_dir is defined) or (config_data_dir is defined) or (ca_trust_dir is defined) %}
     volumes:
     {% endif %}
     {% if project_data_dir is defined %}
       - "{{ project_data_dir +':/var/lib/awx/projects:rw' }}"
+    {% endif %}
+    {% if config_data_dir is defined %}
+      - "{{ config_data_dir +':/etc/tower:rw' }}"
     {% endif %}
     {% if ca_trust_dir is defined %}
       - "{{ ca_trust_dir +':/etc/pki/ca-trust/source/anchors:ro' }}"
@@ -74,11 +77,14 @@ services:
     hostname: awx
     user: root
     restart: unless-stopped
-    {% if (project_data_dir is defined) or (ca_trust_dir is defined) %}
+    {% if (project_data_dir is defined) or (config_data_dir is defined) or (ca_trust_dir is defined) %}
     volumes:
     {% endif %}
     {% if project_data_dir is defined %}
       - "{{ project_data_dir +':/var/lib/awx/projects:rw' }}"
+    {% endif %}
+    {% if config_data_dir is defined %}
+      - "{{ config_data_dir +':/etc/tower:rw' }}"
     {% endif %}
     {% if ca_trust_dir is defined %}
       - "{{ ca_trust_dir +':/etc/pki/ca-trust/source/anchors:ro' }}"
